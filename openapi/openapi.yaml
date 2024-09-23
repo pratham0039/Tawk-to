@@ -1,0 +1,37 @@
+openapi: 3.0.0
+info:
+  title: Summarization API
+  description: An API that summarizes input data.
+  version: 1.0.0
+servers:
+  - url: https://api.yourdomain.com
+    description: Production server
+paths:
+  /summarize:
+    post:
+      summary: Summarize input data
+      operationId: summarizeData
+      requestBody:
+        description: Input data to be summarized
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                text:
+                  type: string
+                  description: The text to summarize
+              required:
+                - text
+      responses:
+        '200':
+          description: Summarized data response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  summary:
+                    type: string
+                    description: The summarized text
